@@ -1,0 +1,11 @@
+FROM itdoginfo/openwrt-sdk-apk:25.12.3
+
+ARG PODKOP_VERSION
+ENV PODKOP_VERSION=${PODKOP_VERSION}
+
+COPY ./kodkop /builder/package/feeds/utilities/kodkop
+COPY ./luci-app-kodkop /builder/package/feeds/luci/luci-app-kodkop
+
+RUN make defconfig && \
+    make package/kodkop/compile -j4 V=s && \
+    make package/luci-app-kodkop/compile -j4 V=s

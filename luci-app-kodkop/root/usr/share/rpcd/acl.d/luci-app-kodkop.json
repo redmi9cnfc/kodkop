@@ -1,0 +1,28 @@
+{
+  "luci-app-kodkop": {
+    "description": "Grant UCI and RPC access to LuCI app kodkop",
+    "read": {
+      "file": {
+        "/etc/init.d/kodkop": [
+          "exec"
+        ],
+        "/usr/bin/kodkop": [
+          "exec"
+        ]
+      },
+      "ubus": {
+        "service": [
+          "list"
+        ]
+      },
+      "uci": [
+        "kodkop"
+      ]
+    },
+    "write": {
+      "uci": [
+        "kodkop"
+      ]
+    }
+  }
+}

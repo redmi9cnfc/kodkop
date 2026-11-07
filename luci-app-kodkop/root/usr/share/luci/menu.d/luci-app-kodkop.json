@@ -1,0 +1,14 @@
+{
+  "admin/services/kodkop": {
+    "title": "Kodkop",
+    "order": 42,
+    "action": {
+      "type": "view",
+      "path": "kodkop/kodkop"
+    },
+    "depends": {
+			"acl": [ "luci-app-kodkop" ],
+			"uci": { "kodkop": true }
+		}
+  }
+}

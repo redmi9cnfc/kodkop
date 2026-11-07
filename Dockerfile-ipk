@@ -1,0 +1,11 @@
+FROM itdoginfo/openwrt-sdk-ipk:24.10.6
+
+ARG PODKOP_VERSION
+
+COPY ./kodkop /builder/package/feeds/utilities/kodkop
+COPY ./luci-app-kodkop /builder/package/feeds/luci/luci-app-kodkop
+
+RUN export PODKOP_VERSION="v${PODKOP_VERSION}" && \
+    make defconfig && \
+    make package/kodkop/compile V=s -j4 && \
+    make package/luci-app-kodkop/compile V=s -j4
